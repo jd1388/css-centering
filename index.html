@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Centering in CSS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:ital,wght@0,300;1,300;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        --orange: #f6601f;
+        --black: #1d1c1b;
+        --backgroundColor: #faf9f4;
+        color: var(--black);
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+      }
+
+      body {
+        background-color: var(--backgroundColor);
+        margin: 200px;
+      }
+
+      h1 {
+        font-size: 84px;
+        font-style: italic;
+        margin: 48px 0;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 48px;
+        margin: 24px 0;
+        text-decoration: underline solid var(--black);
+      }
+
+      a:hover {
+        color: var(--orange);
+      }
+
+      p {
+        font-size: 24px;
+      }
+
+      code {
+        color: var(--orange);
+        font-family: "Roboto Mono", monospace;
+        font-size: 20px;
+      }
+
+      #header-emphasis {
+        color: var(--orange);
+        font-weight: 500;
+      }
+
+      .section {
+        margin: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>
+      <span>Centering in </span>
+      <span id="header-emphasis">CSS</span>
+    </h1>
+    <h2 id="centering-text">
+      <a href="#centering-text">
+        Centering Text
+      </a>
+    </h2>
+    <div class="section">
+      <p>
+        Centering text inside of a container is relatively straight forward. We
+        can use <code>text-align: center;</code> to center text horizontally.
+      </p>
+      <div class="example">
+        <pre class="html-example">
+          <code>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>
