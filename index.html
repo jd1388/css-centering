@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Centering in CSS</title>
+    <title>Centering with CSS</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:ital,wght@0,300;1,300;1,500&display=swap"
       rel="stylesheet"
@@ -20,19 +20,34 @@
 
       body {
         background-color: var(--backgroundColor);
-        margin: 200px;
+        display: grid;
+        grid-template-areas: ". content .";
+        grid-template-columns: minmax(160px, 1fr) minmax(900px, 2fr) minmax(160px, 1fr);
+        margin: 160px 0;
       }
 
       h1 {
-        font-size: 84px;
+        font-size: 64px;
         font-style: italic;
-        margin: 48px 0;
+        margin: 32px 0;
         text-align: center;
       }
 
       h2 {
-        font-size: 48px;
-        margin: 24px 0;
+        font-size: 32px;
+        margin: 16px 0;
+        text-decoration: underline solid var(--black);
+      }
+
+      h3 {
+        font-size: 24px;
+        margin: 16px 0;
+        text-decoration: underline solid var(--black);
+      }
+
+      h4 {
+        font-size: 16px;
+        margin: 8px 0;
         text-decoration: underline solid var(--black);
       }
 
@@ -41,13 +56,18 @@
       }
 
       p {
-        font-size: 24px;
+        font-size: 16px;
       }
 
-      code {
+      code, pre {
         color: var(--orange);
         font-family: "Roboto Mono", monospace;
-        font-size: 20px;
+        font-size: 14px;
+        margin: 12px 0;
+      }
+
+      #content {
+        grid-area: content;
       }
 
       #header-emphasis {
@@ -58,32 +78,123 @@
       .section {
         margin: 24px;
       }
+
+      .example {
+        border: 1px solid var(--black);
+        border-radius: 4px;
+        display: grid;
+        grid-template-areas: "html-code html-example" "css-code html-example";
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr 1fr;
+        margin: 24px;
+      }
+
+      .html-code {
+        grid-area: html-code;
+        padding: 16px 0 0 16px;
+      }
+
+      .css-code {
+        grid-area: css-code;
+        padding: 0 0 16px 16px;
+      }
+
+      .html-example {
+        background-color: var(--black);
+        grid-area: html-example;
+        padding: 16px;
+      }
+
+      #text-align-example {
+        background-color: var(--orange);
+        color: var(--backgroundColor);
+        text-align: center;
+      }
+
+      #text-align-example-fit-content {
+        background-color: var(--orange);
+        color: var(--backgroundColor);
+        text-align: center;
+        width: fit-content;
+      }
     </style>
   </head>
 
   <body>
-    <h1>
-      <span>Centering in </span>
-      <span id="header-emphasis">CSS</span>
-    </h1>
-    <h2 id="centering-text">
-      <a href="#centering-text">
-        Centering Text
-      </a>
-    </h2>
-    <div class="section">
-      <p>
-        Centering text inside of a container is relatively straight forward. We
-        can use <code>text-align: center;</code> to center text horizontally.
-      </p>
-      <div class="example">
-        <pre class="html-example">
-          <code>
-&lt;div&gt;
-  &lt;p&gt;Center this!&lt;/p&gt;
-&lt;/div&gt;
-          </code>
-        </pre>
+    <div id="content">
+      <h1>
+        <span>Centering with </span>
+        <span id="header-emphasis">CSS</span>
+      </h1>
+      <h2 id="centering-text">
+        <a href="#centering-text">
+          Centering Text
+        </a>
+      </h2>
+      <div class="section">
+        <p>
+          Centering text inside of a container is relatively straight forward. We can use <code>text-align: center;</code> to center text horizontally.
+        </p>
+        <div class="example">
+          <div class="html-code">
+            <h4>HTML</h4>
+            <pre>
+  &lt;div&gt;
+    &lt;p&gt;Center this!&lt;/p&gt;
+  &lt;/div&gt;</pre>
+          </div>
+          <div class="css-code">
+            <h4>CSS</h4>
+            <pre>
+  p {
+    text-align: center;
+  }</pre>
+          </div>
+          <div class="html-example">
+            <p id="text-align-example">Center this!</p>
+          </div>
+        </div>
+        <p>
+          As simple as this may seem, there are still some caveats to consider. Specifically, using <code>text-align: center;</code> will only work if the element being styled has the width to center its content appropriately. If the element is only as wide as the content of the text, our text centering won't appear to do anything.
+        </p>
+        <div class="example">
+          <div class="html-code">
+            <h4>HTML</h4>
+            <pre>
+  &lt;div&gt;
+    &lt;p&gt;Center this!&lt;/p&gt;
+  &lt;/div&gt;</pre>
+          </div>
+          <div class="css-code">
+            <h4>CSS</h4>
+            <pre>
+  p {
+    text-align: center;
+    width: fit-content;
+  }</pre>
+          </div>
+          <div class="html-example">
+            <p id="text-align-example-fit-content">This isn't centered 😥</p>
+          </div>
+        </div>
+        <p>
+          While the above example appears to be centered quite poorly, as far as the browser is concerned, <i>it is centered</i>. The issue here is not that the text is not centered, rather the element is only as wide as its text, so it looks the same when left, right, or center aligned. In situations where the width of an element is being restricted to the width of its content, other means can be used to center it.
+        </p>
+      </div>
+      <h2 id="centering-elements-horizontally">
+        <a href="#centering-elements-horizontally">
+          Centering Elements Horizontally
+        </a>
+      </h2>
+      <div class="section">
+        <p>
+          Centering elements has been a finicky challenge over the history of the web. Due to this, a number of different ways to achieve that perfectly centered <code>p</code> inside of its parent <code>div</code>. Here are a number of ways to get something centered horizontally.
+        </p>
+        <h3 id="absolute-position-horizontal">
+          <a href="#absolute-position-horizontal">
+            Absolute Positioning
+          </a>
+        </h3>
       </div>
     </div>
   </body>
