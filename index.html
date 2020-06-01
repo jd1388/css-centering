@@ -119,6 +119,11 @@
         width: fit-content;
       }
 
+      .reference-link {
+        display: block;
+        width: fit-content;
+      }
+
       #text-align-example {
         text-align: center;
         width: 100%;
@@ -129,7 +134,7 @@
         width: fit-content;
       }
 
-      #center-horizontal-absolute {
+      #center-horizontal-relative {
         left: calc(50% - 86px);
         position: relative;
       }
@@ -148,7 +153,7 @@
         justify-items: center;
       }
 
-      #center-vertical-absolute {
+      #center-vertical-relative {
         position: relative;
         top: calc(50% - 25.7px);
       }
@@ -165,6 +170,18 @@
       #center-vertical-grid-container {
         align-items: center;
         display: grid;
+      }
+
+      #center-horizontal-vertical-relative {
+        left: calc(50% - 55.3px);
+        position: relative;
+        top: calc(50% - 25.7px);
+      }
+
+      #center-horizontal-vertical-flex-container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
       }
     </style>
   </head>
@@ -235,14 +252,14 @@ p {
         <p>
           Centering elements has been a finicky challenge over the history of the web. Due to this, a number of different ways to achieve that perfectly centered <code>p</code> inside of its parent <code>div</code>. Here are a number of ways to get something centered horizontally.
         </p>
-        <h3 id="absolute-position-horizontal">
-          <a href="#absolute-position-horizontal">
-            Absolute Positioning
+        <h3 id="relative-position-horizontal">
+          <a href="#relative-position-horizontal">
+            Relative Positioning
           </a>
         </h3>
         <div class="section">
           <p>
-            A valid yet terrible way to center an element is with absolute positioning. The reason to avoid this should be clear: absolutely positioning an element into the middle of another is incredibly fragile and requires a decent amount of <i>math</i>. This will also destroy any resemblence of responsivness unless even more incredible math is used.
+            A valid yet terrible way to center an element is with relative positioning. The reason to avoid this should be clear: relatively positioning an element into the middle of another is incredibly fragile and requires a decent amount of <i>math</i>. This will also destroy any resemblence of responsivness unless even more incredible math is used.
           </p>
           <div class="example">
             <div class="html-code">
@@ -262,7 +279,7 @@ p {
             </div>
             <div class="html-example">
               <div class="center-container">
-                <p class="center-element" id="center-horizontal-absolute">This is sort of centered...</p>
+                <p class="center-element" id="center-horizontal-relative">This is sort of centered...</p>
               </div>
             </div>
           </div>
@@ -372,14 +389,14 @@ div {
         <p>
           Sometimes we're tasked with centering an element vertically as opposed to horizontally. Most of what was covered in the examples for horizontal centering apply to vertical centering as well, except we'll be working in the vertical axis.
         </p>
-        <h3 id="absolute-position-vertical">
-          <a href="#absolute-position-vertical">
-            Absolute Positioning
+        <h3 id="relative-position-vertical">
+          <a href="#relative-position-vertical">
+            Relative Positioning
           </a>
         </h3>
         <div class="section">
           <p>
-            Just like above, absolute positioning can be used to put an element in the center of another element, and it is just as terrible as it is above too!
+            Just like above, relative positioning can be used to put an element in the center of another element, and it is just as terrible as it is above too!
           </p>
           <div class="example">
             <div class="html-code">
@@ -399,7 +416,7 @@ p {
             </div>
             <div class="html-example">
               <div class="center-container">
-                <p class="center-element" id="center-vertical-absolute">This still hurts</p>
+                <p class="center-element" id="center-vertical-relative">This still hurts</p>
               </div>
             </div>
           </div>
@@ -411,7 +428,7 @@ p {
         </h3>
         <div class="section">
           <p>
-            While using <code>margin</code> is perfectly valid for centering horizontally, it's not really built to handle centering elements vertically. While it <i>technically</i> can get an element centered vertically, it will also leave that same feeling of terrible that absolute positioning tends to give.
+            While using <code>margin</code> is perfectly valid for centering horizontally, it's not really built to handle centering elements vertically. While it <i>technically</i> can get an element centered vertically, it will also leave that same feeling of terrible that relative positioning tends to give.
           </p>
           <div class="example">
             <div class="html-code">
@@ -474,7 +491,7 @@ div {
         </h3>
         <div class="section">
           <p>
-            Centering elements verically with CSS grid is as simple as for flexbox.
+            Centering elements verically with CSS Grid is as simple as for flexbox.
           </p>
           <div class="example">
             <div class="html-code">
@@ -499,6 +516,94 @@ div {
             </div>
           </div>
         </div>
+      </div>
+      <h2 id="horizontal-vertical-centering">
+        <a href="#horizontal-vertical-centering">
+          Centering Horizontally and Vertically
+        </a>
+      </h2>
+      <div class="section">
+        <p>
+          Centering an element horizontally <i>and</i> vertically only requires combining some of the methods described above for both. Here's a couple of examples.
+        </p>
+        <div class="example">
+          <div class="html-code">
+            <h4>HTML</h4>
+            <pre>
+&lt;div&gt;
+&lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+          <div class="css-code">
+            <h4>CSS</h4>
+            <pre>
+p {
+left: calc(50% - 55.3px);
+position: relative;
+top: calc(50% - 25.7px);
+}</pre>
+          </div>
+          <div class="html-example">
+            <div class="center-container">
+              <p class="center-element" id="center-horizontal-vertical-relative">Keep scrolling...</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="html-code">
+            <h4>HTML</h4>
+            <pre>
+&lt;div&gt;
+&lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+          <div class="css-code">
+            <h4>CSS</h4>
+            <pre>
+div {
+align-items: center;
+display: flex;
+justify-content: center;
+}</pre>
+          </div>
+          <div class="html-example">
+            <div class="center-container" id="center-horizontal-vertical-flex-container">
+              <p class="center-element">Perfectly centered!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 id="conclusion">
+        <a href="#conclusion">
+          Conclusion
+        </a>
+      </h2>
+      <div class="section">
+        <p>
+          There are many ways to put text or an element in the middle of another element, and each way has pros and cons worth weighing. For example, as hype as CSS Grid is, if Internet Explorer is (unfortunately) a browser that has to be supported, it's probably not the way to go. Here's a sort of TLDR for what to think about when centering elements
+        </p>
+        <ul>
+          <li>
+            Using <code>text-align: center;</code> works for elements that are both displayed as an inline element and have the width available to make meaningful changes to the positioning of the content of the element.
+          </li>
+          <li>
+            Just don't use relative positioning.
+          </li>
+          <li>
+            Using margins to center stuff horizontally is completely valid, and it should be avoided when vertically centering.
+          </li>
+          <li>
+            Flexbox and CSS Grid are both great at doing whatever centering we want!
+          </li>
+        </ul>
+      </div>
+      <h3>
+        Reference
+      </h2>
+      <div class="section">
+        <a class="reference-link" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>
+        <a class="reference-link" href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to CSS Grid</a>
+        <a class="reference-link" href="https://css-tricks.com/centering-css-complete-guide/">Centering in CSS: A Complete Guide</a>
       </div>
     </div>
   </body>
