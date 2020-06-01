@@ -105,17 +105,47 @@
         padding: 16px;
       }
 
-      #text-align-example {
+      .center-container {
+        border: 1px solid var(--orange);
+        border-radius: 4px;
+        height: 100%;
+        width: 100%;
+      }
+
+      .center-element {
         background-color: var(--orange);
         color: var(--backgroundColor);
+        height: fit-content;
+        width: fit-content;
+      }
+
+      #text-align-example {
         text-align: center;
+        width: 100%;
       }
 
       #text-align-example-fit-content {
-        background-color: var(--orange);
-        color: var(--backgroundColor);
         text-align: center;
         width: fit-content;
+      }
+
+      #center-horizontal-absolute {
+        left: calc(50% - 86px);
+        position: relative;
+      }
+
+      #center-horizontal-margin {
+        margin: 0 auto;
+      }
+
+      #center-horizontal-flex-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      #center-horizontal-grid-container {
+        display: grid;
+        justify-items: center;
       }
     </style>
   </head>
@@ -139,19 +169,17 @@
           <div class="html-code">
             <h4>HTML</h4>
             <pre>
-  &lt;div&gt;
-    &lt;p&gt;Center this!&lt;/p&gt;
-  &lt;/div&gt;</pre>
+&lt;p&gt;Center this!&lt;/p&gt;</pre>
           </div>
           <div class="css-code">
             <h4>CSS</h4>
             <pre>
-  p {
-    text-align: center;
-  }</pre>
+p {
+  text-align: center;
+}</pre>
           </div>
           <div class="html-example">
-            <p id="text-align-example">Center this!</p>
+            <p class="center-element" id="text-align-example">Center this!</p>
           </div>
         </div>
         <p>
@@ -161,20 +189,18 @@
           <div class="html-code">
             <h4>HTML</h4>
             <pre>
-  &lt;div&gt;
-    &lt;p&gt;Center this!&lt;/p&gt;
-  &lt;/div&gt;</pre>
+&lt;p&gt;Center this!&lt;/p&gt;</pre>
           </div>
           <div class="css-code">
             <h4>CSS</h4>
             <pre>
-  p {
-    text-align: center;
-    width: fit-content;
-  }</pre>
+p {
+  text-align: center;
+  width: fit-content;
+}</pre>
           </div>
           <div class="html-example">
-            <p id="text-align-example-fit-content">This isn't centered 😥</p>
+            <p class="center-element" id="text-align-example-fit-content">This isn't centered 😥</p>
           </div>
         </div>
         <p>
@@ -195,6 +221,128 @@
             Absolute Positioning
           </a>
         </h3>
+        <div class="section">
+          <p>
+            A valid yet terrible way to center an element is with absolute positioning. The reason to avoid this should be clear: absolutely positioning an element into the middle of another is incredibly fragile and requires a decent amount of <i>math</i>. This will also destroy any resemblence of responsivness unless even more incredible math is used.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+p {
+  left: calc(50% - 152.1px);
+  position: relative;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container">
+                <p class="center-element" id="center-horizontal-absolute">This is sort of centered...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="margin-auto-horizontal">
+          <a href="#margin-auto-horizontal">
+            Automatic Margin
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            Before we had flexbox to do everything for us, a common way to center elements was to use <code>margin: auto;</code>. The way this CSS works is the browser attempts to <i>automatically</i> disperse excess space on the horizontal axis on both sides of the element in the form of margin.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+p {
+  margin: 0 auto;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container">
+                <p class="center-element" id="center-horizontal-margin">Margin magic!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="flexbox-horizontal">
+          <a href="#flexbox-horizontal">
+            Flexbox
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            The go-to solution for many today when it comes to centering elements is using some good, old flexbox! This kind of problem is what flexbox is built for: displaying elements along a single axis! There are many ways using flexbox to get an element centered. In this example, the element container the element we are centering is centering its content using <code>justify-content: center;</code>.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+div {
+  display: flex;
+  justify-content: center;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container" id="center-horizontal-flex-container">
+                <p class="center-element">Flexing into the center!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="css-grid-horizontal">
+          <a href="#css-grid-horizontal">
+            CSS Grid
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            CSS Grid, a wonderful and buzzy frontend technology, can also be used to center stuff. There are some caveats to using grid though. First, if Internet Explorer has to be (unfortunately) supported, this will be possible, yet miserable. Second, the true power of CSS Grid is realized in <a href="css-grid-horizontal-vertical">two dimensional</a> problems. When centering an element horizontally, a one dimensional problem, it's basically flexbox.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+div {
+  display: grid;
+  justify-items: center;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container" id="center-horizontal-grid-container">
+                <p class="center-element">Center of the "grid"</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
