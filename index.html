@@ -147,6 +147,25 @@
         display: grid;
         justify-items: center;
       }
+
+      #center-vertical-absolute {
+        position: relative;
+        top: calc(50% - 25.7px);
+      }
+
+      #center-vertical-margin {
+        margin: 98px 0;
+      }
+
+      #center-vertical-flex-container {
+        align-items: center;
+        display: flex;
+      }
+
+      #center-vertical-grid-container {
+        align-items: center;
+        display: grid;
+      }
     </style>
   </head>
 
@@ -339,6 +358,143 @@ div {
             <div class="html-example">
               <div class="center-container" id="center-horizontal-grid-container">
                 <p class="center-element">Center of the "grid"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 id="centering-elements-vertically">
+        <a href="#centering-elements-vertically">
+          Centering Elements Vertically
+        </a>
+      </h2>
+      <div class="section">
+        <p>
+          Sometimes we're tasked with centering an element vertically as opposed to horizontally. Most of what was covered in the examples for horizontal centering apply to vertical centering as well, except we'll be working in the vertical axis.
+        </p>
+        <h3 id="absolute-position-vertical">
+          <a href="#absolute-position-vertical">
+            Absolute Positioning
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            Just like above, absolute positioning can be used to put an element in the center of another element, and it is just as terrible as it is above too!
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+p {
+  position: relative;
+  top: calc(50% - 25.7px);
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container">
+                <p class="center-element" id="center-vertical-absolute">This still hurts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="margin-vertical">
+          <a href="#margin-vertical">
+            Margin
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            While using <code>margin</code> is perfectly valid for centering horizontally, it's not really built to handle centering elements vertically. While it <i>technically</i> can get an element centered vertically, it will also leave that same feeling of terrible that absolute positioning tends to give.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;This is not ideal&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+p {
+  margin: 98px 0;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container">
+                <p class="center-element" id="center-vertical-margin">Margin magic!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="flexbox-vertical">
+          <a href="#flexbox-vertical">
+            Flexbox
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            When using flexbox, centering vertically is trivial. All we have to do is throw <code>align-items: center;</code> into the styling of the container, and we will have a centered element!
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+div {
+  align-items: center;
+  display: flex;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container" id="center-vertical-flex-container">
+                <p class="center-element">Easy with flexbox!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 id="css-grid-vertical">
+          <a href="#css-grid-vertical">
+            CSS Grid
+          </a>
+        </h3>
+        <div class="section">
+          <p>
+            Centering elements verically with CSS grid is as simple as for flexbox.
+          </p>
+          <div class="example">
+            <div class="html-code">
+              <h4>HTML</h4>
+              <pre>
+&lt;div&gt;
+  &lt;p&gt;Center this!&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="css-code">
+              <h4>CSS</h4>
+              <pre>
+div {
+  align-items: center;
+  display: grid;
+}</pre>
+            </div>
+            <div class="html-example">
+              <div class="center-container" id="center-vertical-grid-container">
+                <p class="center-element">Easy with grid too!</p>
               </div>
             </div>
           </div>
